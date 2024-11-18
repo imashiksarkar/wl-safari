@@ -12,10 +12,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Vite + React</h1>
-      <div className='card'>
-        <Button onClick={handleThemeToggle}>Toggle Theme</Button>
-      </div>
+      <Button onClick={handleThemeToggle}>Toggle Theme</Button>
     </div>
   )
 }
