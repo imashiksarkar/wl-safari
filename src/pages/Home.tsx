@@ -1,19 +1,12 @@
-import { Button } from '@/components/ui/button'
-import { useTheme } from '@/contexts/ThemeProvider'
-
 const Home = () => {
-  const { theme, setTheme } = useTheme()
-
-  const handleThemeToggle = () => {
-    console.log('toggle theme')
-
-    setTheme(theme !== 'dark' ? 'dark' : 'light')
-  }
-
   return (
-    <div>
-      <Button onClick={handleThemeToggle}>Toggle Theme</Button>
-    </div>
+    <section className='home-page h-full'>
+      <div className='con flex items-center justify-center h-full'>
+        <h1 className='dark:text-purple-600 text-orange-800'>Welcome to the 🏡 page.</h1>
+
+
+      </div>
+    </section>
   )
 }
 

@@ -1,16 +1,19 @@
+import Navbar from '@/components/Navbar'
 import { Outlet } from 'react-router-dom'
 
 const Root = () => {
   return (
-    <div className='app-body font-poppins'>
-      <header>
-        <h1>Header</h1>
+    <div className='app-body font-poppins flex flex-col h-dvh w-full relative'>
+      <header className='bg-secondary'>
+        <Navbar />
       </header>
-      <main>
+      <main className='grow'>
         <Outlet />
       </main>
-      <footer>
-        <p>Footer</p>
+      <footer className='bg-secondary'>
+        <div className='con text-center py-2'>
+          <p>Footer</p>
+        </div>
       </footer>
     </div>
   )
