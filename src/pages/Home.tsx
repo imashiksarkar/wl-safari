@@ -1,11 +1,15 @@
+import BlogCarousel from '@/components/BlogCarousel'
+
 const Home = () => {
   return (
     <section className='home-page h-full'>
-      <div className='con flex items-center justify-center h-full'>
-        <h1 className='dark:text-purple-600 text-orange-800'>Welcome to the 🏡 page.</h1>
-
-
+      <div className='max-w-[1600px] mx-auto'>
+        <BlogCarousel />
       </div>
+      {/* <div className='h-96 w-full bg-red-400'></div>
+      <div className='h-96 w-full bg-red-400'></div>
+      <div className='h-96 w-full bg-red-400'></div>
+      <div className='h-96 w-full bg-purple-400' id='contact'></div> */}
     </section>
   )
 }

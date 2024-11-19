@@ -45,9 +45,9 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to='/#contact' className='hover:underline'>
+              <a href='/#contact' className='hover:underline'>
                 Contact
-              </NavLink>
+              </a>
             </li>
           </ul>
 
