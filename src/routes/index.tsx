@@ -1,7 +1,10 @@
 import NotFound from '@/components/NotFound'
 import Root from '@/layouts/Root'
 import Home, { loader as homeLoader } from '@/pages/Home'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Login from '@/pages/Login'
+import ResetPassword from '@/pages/ResetPassword'
+import Signup from '@/pages/Signup'
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 
 const rootRouter = createBrowserRouter(
   [
@@ -25,15 +28,22 @@ const rootRouter = createBrowserRouter(
         },
         {
           path: '/auth',
-          element: 'Auth Page Layout.',
           children: [
             {
-              path: '/auth/login',
-              element: 'Login Page.',
+              path: '/auth',
+              element: <Navigate to={'/auth/login'} />,
             },
             {
-              path: '/auth/register',
-              element: 'Register Page.',
+              path: '/auth/login',
+              element: <Login />,
+            },
+            {
+              path: '/auth/signup',
+              element: <Signup />,
+            },
+            {
+              path: '/auth/reset-password',
+              element: <ResetPassword />,
             },
           ],
         },
