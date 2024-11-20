@@ -1,6 +1,6 @@
 import NotFound from '@/components/NotFound'
 import Root from '@/layouts/Root'
-import Home from '@/pages/Home'
+import Home, { loader as homeLoader } from '@/pages/Home'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const rootRouter = createBrowserRouter(
@@ -13,6 +13,7 @@ const rootRouter = createBrowserRouter(
         {
           path: '/',
           element: <Home />,
+          loader: homeLoader,
         },
         {
           path: '/blogs',

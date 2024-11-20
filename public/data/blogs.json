@@ -1,0 +1,126 @@
+[
+  {
+    "id": 1,
+    "adventureTitle": "Savannah Wildlife Safari",
+    "image": "https://images.pexels.com/photos/29435756/pexels-photo-29435756/free-photo-of-giraffes-in-samburu-national-reserve-kenya.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "categoryName": "Wildlife Safari",
+    "shortDescription": "Experience the vibrant wildlife of the African savannah in an eco-friendly way.",
+    "adventureCost": 1200,
+    "bookingAvailability": true,
+    "location": "Serengeti National Park, Tanzania",
+    "duration": "5 days, 4 nights",
+    "adventureLevel": "Moderate",
+    "includedItems": [
+      "Guided wildlife tours",
+      "Eco-lodging",
+      "Meals and snacks",
+      "Photography workshop"
+    ],
+    "ecoFriendlyFeatures": [
+      "Solar-powered accommodations",
+      "Plastic-free dining",
+      "Conservation donations included",
+      "Electric safari vehicles"
+    ],
+    "maxGroupSize": 12,
+    "specialInstructions": [
+      "Pack light, breathable clothing",
+      "Bring a reusable water bottle",
+      "Binoculars are highly recommended",
+      "Follow Leave No Trace principles"
+    ]
+  },
+  {
+    "id": 2,
+    "adventureTitle": "Rainforest Night Safari",
+    "image": "https://images.pexels.com/photos/29433237/pexels-photo-29433237/free-photo-of-olive-baboon-resting-in-tree-canopy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "categoryName": "Wildlife Safari",
+    "shortDescription": "Explore the wonders of the rainforest after dark.",
+    "adventureCost": 800,
+    "bookingAvailability": true,
+    "location": "Amazon Rainforest, Brazil",
+    "duration": "3 days, 2 nights",
+    "adventureLevel": "Challenging",
+    "includedItems": [
+      "Night tours with expert guides",
+      "Eco-friendly camping gear",
+      "Organic meals",
+      "Wildlife tracking equipment"
+    ],
+    "ecoFriendlyFeatures": [
+      "Minimal-impact campsites",
+      "Biodegradable toiletries provided",
+      "Support for local communities",
+      "Energy-efficient LED lighting"
+    ],
+    "maxGroupSize": 8,
+    "specialInstructions": [
+      "Carry insect repellent",
+      "Wear long-sleeved clothing",
+      "Stay hydrated",
+      "Follow guide instructions carefully"
+    ]
+  },
+  {
+    "id": 3,
+    "adventureTitle": "Mangrove Kayak Safari",
+    "image": "https://images.pexels.com/photos/23656180/pexels-photo-23656180/free-photo-of-aerial-view-of-tourists-paddling-in-the-sea.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "categoryName": "Water Adventure",
+    "shortDescription": "Navigate serene mangrove forests and spot exotic wildlife.",
+    "adventureCost": 300,
+    "bookingAvailability": true,
+    "location": "Sundarbans, India",
+    "duration": "1 day",
+    "adventureLevel": "Easy",
+    "includedItems": [
+      "Kayaks and safety gear",
+      "Local guide",
+      "Packed lunch",
+      "Wildlife observation kit"
+    ],
+    "ecoFriendlyFeatures": [
+      "No-motor policy",
+      "Support for mangrove restoration",
+      "Eco-safe gear",
+      "Use of compostable packaging"
+    ],
+    "maxGroupSize": 10,
+    "specialInstructions": [
+      "Wear water-resistant clothing",
+      "Carry sunscreen and a hat",
+      "Respect wildlife habitats",
+      "Avoid loud noises"
+    ]
+  },
+  {
+    "id": 4,
+    "adventureTitle": "Mountain Gorilla Trek",
+    "image": "https://images.pexels.com/photos/2450296/pexels-photo-2450296.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "categoryName": "Wildlife Safari",
+    "shortDescription": "Encounter mountain gorillas in their natural habitat.",
+    "adventureCost": 1500,
+    "bookingAvailability": false,
+    "location": "Bwindi Impenetrable Forest, Uganda",
+    "duration": "4 days, 3 nights",
+    "adventureLevel": "Strenuous",
+    "includedItems": [
+      "Professional trekking guide",
+      "Park permits",
+      "Accommodation",
+      "Meals"
+    ],
+    "ecoFriendlyFeatures": [
+      "Contribution to gorilla conservation",
+      "Support for anti-poaching initiatives",
+      "Low-impact trekking routes",
+      "Reusable gear"
+    ],
+    "maxGroupSize": 6,
+    "specialInstructions": [
+      "Wear sturdy hiking boots",
+      "Carry a raincoat",
+      "Avoid direct eye contact with gorillas",
+      "Do not leave any waste behind"
+    ]
+  }
+]
