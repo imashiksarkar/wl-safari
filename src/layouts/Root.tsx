@@ -98,6 +98,9 @@ const Root = () => {
             </ul>
           </div>
         </div>
+        <div className="text-center py-4 bg-slate-300 dark:bg-slate-900">
+          <p>&copy;{new Date().getFullYear()} All Right Reserved.</p>
+        </div>
       </footer>
     </div>
   )
