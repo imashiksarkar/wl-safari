@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Amazon",
+    "image": "https://images.pexels.com/photos/29433237/pexels-photo-29433237/free-photo-of-olive-baboon-resting-in-tree-canopy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "num_tours": 5
+  },
+  {
+    "id": 2,
+    "name": "Serengeti",
+    "image": "https://images.pexels.com/photos/29433237/pexels-photo-29433237/free-photo-of-olive-baboon-resting-in-tree-canopy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "num_tours": 7
+  },
+  {
+    "id": 3,
+    "name": "Galápagos Islands",
+    "image": "https://images.pexels.com/photos/29433237/pexels-photo-29433237/free-photo-of-olive-baboon-resting-in-tree-canopy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "num_tours": 4
+  },
+  {
+    "id": 4,
+    "name": "Kruger National Park",
+    "image": "https://images.pexels.com/photos/29433237/pexels-photo-29433237/free-photo-of-olive-baboon-resting-in-tree-canopy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "num_tours": 6
+  },
+  {
+    "id": 5,
+    "name": "Borneo Rainforest",
+    "image": "https://images.pexels.com/photos/29433237/pexels-photo-29433237/free-photo-of-olive-baboon-resting-in-tree-canopy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "num_tours": 3
+  },
+  {
+    "id": 6,
+    "name": "Yellowstone National Park",
+    "image": "https://images.pexels.com/photos/29433237/pexels-photo-29433237/free-photo-of-olive-baboon-resting-in-tree-canopy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "num_tours": 8
+  },
+  {
+    "id": 7,
+    "name": "Pantanal",
+    "image": "https://images.pexels.com/photos/29433237/pexels-photo-29433237/free-photo-of-olive-baboon-resting-in-tree-canopy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "num_tours": 5
+  }
+]
