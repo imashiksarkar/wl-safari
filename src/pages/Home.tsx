@@ -8,7 +8,10 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { useId } from 'react'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { useToast } from '@/hooks/use-toast'
+import { FormEventHandler, useId } from 'react'
 import { FaArrowRight } from 'react-icons/fa'
 import { Link, useLoaderData } from 'react-router-dom'
 
@@ -16,6 +19,31 @@ const Home = () => {
   const { blogs, popularDestinations } = useLoaderData() as Awaited<
     ReturnType<typeof loader>
   >
+
+  const { toast } = useToast()
+
+  const handleFormSubmit: FormEventHandler<HTMLFormElement> = (event) => {
+    event.preventDefault()
+    const { fullName, email, message } = Object.fromEntries(
+      new FormData(event.target as HTMLFormElement)
+    ) as {
+      fullName?: string
+      email?: string
+      message?: string
+    }
+
+    if (!fullName?.trim() || !email?.trim() || !message?.trim()) {
+      return toast({
+        title: 'Invalid Form Data!',
+        description: `Fill the form correctly.`,
+      })
+    }
+
+    toast({
+      title: 'Scheduled: Catch up',
+      description: `We will contact you via "${email}".`,
+    })
+  }
 
   return (
     <section className='home-page h-full'>
@@ -93,6 +121,42 @@ const Home = () => {
               num_tours={num_tours}
             />
           ))}
+        </div>
+      </div>
+
+      {/* Contact */}
+      <div className='con mt-12' id='contact'>
+        <header>
+          <h1 className='text-center text-2xl font-semibold'>Contact Us</h1>
+        </header>
+
+        <div className='contact-wrapper grid grid-cols-1 lg:grid-cols-2 mt-6'>
+          <div className='banner w-full h-full max-h-96 hidden lg:block'>
+            <img
+              src='https://images.pexels.com/photos/23656180/pexels-photo-23656180/free-photo-of-aerial-view-of-tourists-paddling-in-the-sea.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+              alt='banner'
+              className='w-full h-full object-cover'
+            />
+          </div>
+
+          <div className='form bg-slate-300 dark:bg-slate-900 p-8'>
+            <form
+              className='h-full grid grid-cols-1 lg:grid-cols-2 gap-4 grid-rows-[auto_1fr_auto]'
+              onSubmit={handleFormSubmit}
+            >
+              <Input name='fullName' type='text' placeholder='Full Name' />
+              <Input name='email' type='email' placeholder='Your Email' />
+              <Textarea
+                rows={5}
+                name='message'
+                className='lg:col-span-2 h-full'
+                placeholder='Write your message...'
+              />
+              <Button type='submit' className='lg:col-span-2'>
+                Send
+              </Button>
+            </form>
+          </div>
         </div>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import Navbar from '@/components/Navbar'
+import { Toaster } from '@/components/ui/toaster'
 import { Outlet } from 'react-router-dom'
 
 const Root = () => {
@@ -10,6 +11,7 @@ const Root = () => {
       <main className='grow'>
         <Outlet />
       </main>
+      <Toaster  />
       <footer className='bg-secondary'>
         <div className='con text-center py-2'>
           <p>Footer</p>
