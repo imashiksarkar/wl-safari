@@ -1,3 +1,5 @@
+import 'animate.css'
+
 import BlogCarousel from '@/components/BlogCarousel'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -68,7 +70,7 @@ const Home = () => {
               shortDescription,
               ecoFriendlyFeatures,
             }) => (
-              <Card key={id} className='max-w-[350px] flex flex-col'>
+              <Card key={id} className='max-w-[350px] flex flex-col animate__animated animate__bounce'>
                 <CardHeader>
                   <img
                     src={image}
@@ -165,7 +167,7 @@ const Home = () => {
 
 const DestinationCard = ({ name, image, num_tours }: Destination) => {
   return (
-    <div className='destinations__item flex flex-col items-center p-4 max-w-80'>
+    <div className='destinations__item flex flex-col items-center p-4 max-w-80 animate__animated animate__bounce'>
       <figure className='aspect-[3/5] w-full rounded-full overflow-hidden border-4'>
         <img src={image} alt={name} className='w-full h-full object-cover' />
       </figure>
