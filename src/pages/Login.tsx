@@ -10,14 +10,16 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { useAuth } from '@/contexts/AuthProvider'
 import { useToast } from '@/hooks/use-toast'
-import { FormEventHandler } from 'react'
+import { FormEventHandler, useRef } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 
 const Login = () => {
-  const { loginWithGoogle, user, loading, logIn } = useAuth()
+  const { loginWithGoogle, user, loading, logIn, resetPassword } = useAuth()
   const { toast } = useToast()
 
-  if (!loading && user) return <Navigate to={'/'} />
+  if (loading) return 'Loading User Data...'
+  if (user) return <Navigate to={'/'} />
+  const mailRef = useRef<null | HTMLInputElement>(null)
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault()
@@ -36,11 +38,12 @@ const Login = () => {
       '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\\d!@#$%^&*(),.?":{}|<>]{6,}$'
     ).test(password)
 
-    if (!isValidEmail || !isValidPassword)
+    if (!isValidEmail || !isValidPassword) {
       return toast({
         title: 'Invalid Credentials!',
         description: 'Email or Password is invalid.',
       })
+    }
 
     logIn(email, password).catch((error) => {
       return toast({
@@ -48,6 +51,22 @@ const Login = () => {
         description: error.message,
       })
     })
+  }
+
+  const handleForgotPassword = () => {
+    const email = mailRef.current?.value || ''
+    const isValidEmail = RegExp(
+      '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$'
+    ).test(email)
+
+    if (!isValidEmail) {
+      return toast({
+        title: 'Invalid Email!',
+        description: 'Put a valid email.',
+      })
+    }
+
+    resetPassword(email)
   }
 
   return (
@@ -72,6 +91,7 @@ const Login = () => {
                     placeholder='m@example.com'
                     required
                     autoComplete='email'
+                    ref={mailRef}
                   />
                 </div>
                 <div className='grid gap-2'>
@@ -80,6 +100,8 @@ const Login = () => {
                     <Button
                       variant={'link'}
                       className='ml-auto inline-block text-sm underline'
+                      onClick={handleForgotPassword}
+                      type='button'
                     >
                       Forgot your password?
                     </Button>

@@ -1,5 +1,6 @@
 import logo from '@/assets/logo.png'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
 import {
   HoverCard,
   HoverCardContent,
@@ -19,16 +20,10 @@ import { useTheme } from '@/contexts/ThemeProvider'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { RxAvatar } from 'react-icons/rx'
 import { Link, NavLink } from 'react-router-dom'
-import { Button } from '@/components/ui/button'
-import { useEffect } from 'react'
 
 const Navbar = () => {
   const { theme, setTheme } = useTheme()
   const { user, logOut } = useAuth()
-
-  useEffect(() => {
-    console.log('user change', user?.photoURL)
-  }, [user])
 
   const handleThemeToggle = () => setTheme(theme !== 'dark' ? 'dark' : 'light')
 

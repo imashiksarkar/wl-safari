@@ -8,6 +8,7 @@ import {
   signInWithPopup,
   updateProfile,
   signOut,
+  sendPasswordResetEmail,
 } from 'firebase/auth'
 import {
   createContext,
@@ -32,6 +33,7 @@ type AuthProviderState = {
     password: string
   ) => ReturnType<typeof signInWithEmailAndPassword>
   logOut: () => void
+  resetPassword: (email: string) => void
 }
 
 const provider = new GoogleAuthProvider()
@@ -45,7 +47,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 
   const loginWithGoogle = () => {
     setLoading(true)
-    signInWithPopup(auth, provider).catch(console.log)
+    signInWithPopup(auth, provider)
   }
   const signUp: AuthProviderState['signUp'] = (
     fullName,
@@ -68,11 +70,14 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     signOut(auth)
   }
 
+  const resetPassword = (email: string) => {
+    sendPasswordResetEmail(auth, email, { url: 'http://localhost:5173' })
+  }
+
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (user = null) => {
       setUser(user)
       setLoading(false)
-      console.log(user)
     })
 
     return unSubscribe
@@ -85,6 +90,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     signUp,
     logIn,
     logOut,
+    resetPassword,
   }
 
   return (
