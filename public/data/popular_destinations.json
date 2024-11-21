@@ -2,31 +2,19 @@
   {
     "id": 1,
     "name": "Amazon",
-    "image": "https://images.pexels.com/photos/29433237/pexels-photo-29433237/free-photo-of-olive-baboon-resting-in-tree-canopy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "image": "https://images.pexels.com/photos/29435756/pexels-photo-29435756/free-photo-of-giraffes-in-samburu-national-reserve-kenya.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "num_tours": 5
-  },
-  {
-    "id": 2,
-    "name": "Serengeti",
-    "image": "https://images.pexels.com/photos/29433237/pexels-photo-29433237/free-photo-of-olive-baboon-resting-in-tree-canopy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "num_tours": 7
   },
   {
     "id": 3,
     "name": "Galápagos Islands",
-    "image": "https://images.pexels.com/photos/29433237/pexels-photo-29433237/free-photo-of-olive-baboon-resting-in-tree-canopy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "image": "https://images.pexels.com/photos/23656180/pexels-photo-23656180/free-photo-of-aerial-view-of-tourists-paddling-in-the-sea.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "num_tours": 4
-  },
-  {
-    "id": 4,
-    "name": "Kruger National Park",
-    "image": "https://images.pexels.com/photos/29433237/pexels-photo-29433237/free-photo-of-olive-baboon-resting-in-tree-canopy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "num_tours": 6
   },
   {
     "id": 5,
     "name": "Borneo Rainforest",
-    "image": "https://images.pexels.com/photos/29433237/pexels-photo-29433237/free-photo-of-olive-baboon-resting-in-tree-canopy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "image": "https://images.pexels.com/photos/2450296/pexels-photo-2450296.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "num_tours": 3
   },
   {
@@ -38,7 +26,7 @@
   {
     "id": 7,
     "name": "Pantanal",
-    "image": "https://images.pexels.com/photos/29433237/pexels-photo-29433237/free-photo-of-olive-baboon-resting-in-tree-canopy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "image": "https://images.pexels.com/photos/29435756/pexels-photo-29435756/free-photo-of-giraffes-in-samburu-national-reserve-kenya.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "num_tours": 5
   }
 ]
