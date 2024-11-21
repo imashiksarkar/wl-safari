@@ -2,6 +2,8 @@ import NotFound from '@/components/NotFound'
 import PrivateRoute from '@/components/PrivateRoute'
 import AuthProvider from '@/contexts/AuthProvider'
 import Root from '@/layouts/Root'
+import BlogDetails, { loader as blogDetailsLoader } from '@/pages/BlogDetails'
+import Blogs, { loader as blogsLoader } from '@/pages/Blogs'
 import Home, { loader as homeLoader } from '@/pages/Home'
 import Login from '@/pages/Login'
 import Profile from '@/pages/Profile'
@@ -24,11 +26,17 @@ const rootRouter = createBrowserRouter(
         },
         {
           path: '/blogs',
-          element: 'Blogs List Page.',
+          element: <Blogs />,
+          loader: blogsLoader,
         },
         {
           path: '/blogs/:blogId',
-          element: 'Blogs Details.',
+          loader: blogDetailsLoader,
+          element: (
+            <PrivateRoute>
+              <BlogDetails />
+            </PrivateRoute>
+          ),
         },
         {
           path: '/auth',
