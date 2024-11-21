@@ -7,9 +7,10 @@ const NotFound = () => {
       <Helmet>
         <title>404| Not Found </title>
       </Helmet>
-      <div className='con flex items-center justify-center h-dvh'>
+      <div className='con flex flex-col gap-6 items-center justify-center h-dvh'>
         <h1>404 Page Not Found!</h1>
-        <Link to='/'>Go To Home</Link>
+        
+        <Link to='/' className='text-green-500 underline'>Go To Home</Link>
       </div>
     </section>
   )
