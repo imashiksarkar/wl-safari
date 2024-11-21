@@ -27,6 +27,8 @@ const Navbar = () => {
 
   const handleThemeToggle = () => setTheme(theme !== 'dark' ? 'dark' : 'light')
 
+  const photoUrl = user?.photoURL || ''
+
   return (
     <section className='navbar'>
       <div className='con'>
@@ -61,7 +63,7 @@ const Navbar = () => {
                 <Avatar>
                   <AvatarImage
                     className='w-full aspect-square object-cover'
-                    src={user?.photoURL ? user.photoURL : ''}
+                    src={photoUrl}
                   />
                   <AvatarFallback>
                     <RxAvatar className='text-4xl' />

@@ -10,15 +10,16 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { useAuth } from '@/contexts/AuthProvider'
 import { useToast } from '@/hooks/use-toast'
-import { FormEventHandler, useRef } from 'react'
+import { FormEventHandler, useRef, useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 
 const Login = () => {
+  const [isLoadingGoogle, setIsLoadingGoogle] = useState(false)
+  const [isLoadingPassword, setIsLoadingPassword] = useState(false)
+
   const { loginWithGoogle, user, loading, logIn, resetPassword } = useAuth()
   const { toast } = useToast()
 
-  if (loading) return 'Loading User Data...'
-  if (user) return <Navigate to={'/'} />
   const mailRef = useRef<null | HTMLInputElement>(null)
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
@@ -45,12 +46,15 @@ const Login = () => {
       })
     }
 
-    logIn(email, password).catch((error) => {
-      return toast({
-        title: 'Login Error!',
-        description: error.message,
+    setIsLoadingPassword(true)
+    logIn(email, password)
+      .catch((error) => {
+        return toast({
+          title: 'Login Error!',
+          description: error.message,
+        })
       })
-    })
+      .finally(() => setIsLoadingPassword(false))
   }
 
   const handleForgotPassword = () => {
@@ -68,6 +72,13 @@ const Login = () => {
 
     resetPassword(email)
   }
+
+  const handleGoogleLogin = () => {
+    setIsLoadingGoogle(true)
+    loginWithGoogle().finally(() => setIsLoadingGoogle(false))
+  }
+
+  if (!loading && user) return <Navigate to={'/'} />
 
   return (
     <section className={`login-page`}>
@@ -116,14 +127,15 @@ const Login = () => {
                   />
                 </div>
                 <Button type='submit' className='w-full'>
-                  Login
+                  {isLoadingPassword ? 'Loading...' : 'Login'}
                 </Button>
                 <Button
                   variant='outline'
                   className='w-full'
-                  onClick={loginWithGoogle}
+                  type='button'
+                  onClick={handleGoogleLogin}
                 >
-                  Login with Google
+                  {isLoadingGoogle ? 'Loading...' : 'Login with Google'}
                 </Button>
               </div>
               <div className='mt-4 text-center text-sm'>

@@ -10,12 +10,14 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { useAuth } from '@/contexts/AuthProvider'
 import { useToast } from '@/hooks/use-toast'
-import { FormEventHandler } from 'react'
-import { Link } from 'react-router-dom'
+import { FormEventHandler, useState } from 'react'
+import { Link, Navigate } from 'react-router-dom'
 
 const Signup = () => {
+  const [isLoadingSignUp, setIsLoadingSignUp] = useState(false)
+
   const { toast } = useToast()
-  const { signUp } = useAuth()
+  const { signUp, user, loading } = useAuth()
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault()
@@ -51,13 +53,18 @@ const Signup = () => {
       })
     }
 
-    signUp(fullName, photoUrl, email, password).catch((error) => {
-      return toast({
-        title: 'Login signing up!',
-        description: error.message,
+    setIsLoadingSignUp(true)
+    signUp(fullName, photoUrl, email, password)
+      .catch((error) => {
+        return toast({
+          title: 'Login signing up!',
+          description: error.message,
+        })
       })
-    })
+      .finally(() => setIsLoadingSignUp(false))
   }
+
+  if (!loading && user) return <Navigate to='/' />
 
   return (
     <section className='signup-page'>
@@ -116,7 +123,7 @@ const Signup = () => {
                   />
                 </div>
                 <Button type='submit' className='w-full'>
-                  Signup
+                  {isLoadingSignUp ? 'Loading...' : 'Signup'}
                 </Button>
               </div>
               <div className='mt-4 text-center text-sm'>

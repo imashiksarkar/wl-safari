@@ -4,11 +4,12 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
-  updateProfile,
   signOut,
-  sendPasswordResetEmail,
+  updateProfile,
+  UserCredential,
 } from 'firebase/auth'
 import {
   createContext,
@@ -21,7 +22,7 @@ import {
 type AuthProviderState = {
   loading: boolean
   user: User | null
-  loginWithGoogle: () => void
+  loginWithGoogle: () => Promise<UserCredential>
   signUp: (
     fullName: string,
     photoUrl: string,
@@ -34,6 +35,10 @@ type AuthProviderState = {
   ) => ReturnType<typeof signInWithEmailAndPassword>
   logOut: () => void
   resetPassword: (email: string) => void
+  editProfile: (data: {
+    displayName?: string | null
+    photoURL?: string | null
+  }) => void
 }
 
 const provider = new GoogleAuthProvider()
@@ -43,25 +48,29 @@ const AuthProviderContext = createContext({} as AuthProviderState)
 const AuthProvider = ({ children }: PropsWithChildren) => {
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState<null | User>(null)
-  const [profileUpdate, setProfileUpdate] = useState(false)
+  const [isProfileUpdate, setIsProfileUpdate] = useState(0)
 
   const loginWithGoogle = () => {
     setLoading(true)
-    signInWithPopup(auth, provider)
+    return signInWithPopup(auth, provider)
   }
   const signUp: AuthProviderState['signUp'] = (
     fullName,
     photoUrl,
     email,
     password
-  ) =>
-    createUserWithEmailAndPassword(auth, email, password).then((cred) => {
-      updateProfile(cred.user, {
-        displayName: fullName,
-        photoURL: photoUrl,
-      }).then(() => setProfileUpdate(true))
-      return cred
-    })
+  ) => {
+    return createUserWithEmailAndPassword(auth, email, password).then(
+      (cred) => {
+        updateProfile(cred.user, {
+          displayName: fullName,
+          photoURL: photoUrl,
+        }).then(() => setIsProfileUpdate(Math.random()))
+
+        return cred
+      }
+    )
+  }
 
   const logIn: AuthProviderState['logIn'] = (email, password) =>
     signInWithEmailAndPassword(auth, email, password)
@@ -74,6 +83,14 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     sendPasswordResetEmail(auth, email, { url: 'http://localhost:5173' })
   }
 
+  const editProfile: AuthProviderState['editProfile'] = (payload) => {
+    if (user) {
+      updateProfile(user, payload).then(() => {
+        setIsProfileUpdate(Math.random())
+      })
+    }
+  }
+
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (user = null) => {
       setUser(user)
@@ -81,7 +98,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     })
 
     return unSubscribe
-  }, [profileUpdate])
+  }, [isProfileUpdate])
 
   const value: AuthProviderState = {
     loading,
@@ -91,6 +108,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     logIn,
     logOut,
     resetPassword,
+    editProfile,
   }
 
   return (

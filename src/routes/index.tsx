@@ -1,10 +1,13 @@
 import NotFound from '@/components/NotFound'
+import PrivateRoute from '@/components/PrivateRoute'
 import AuthProvider from '@/contexts/AuthProvider'
 import Root from '@/layouts/Root'
 import Home, { loader as homeLoader } from '@/pages/Home'
 import Login from '@/pages/Login'
+import Profile from '@/pages/Profile'
 import ResetPassword from '@/pages/ResetPassword'
 import Signup from '@/pages/Signup'
+import UpdateProfile from '@/pages/UpdateProfile'
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 
 const rootRouter = createBrowserRouter(
@@ -50,17 +53,19 @@ const rootRouter = createBrowserRouter(
         },
         {
           path: '/profile',
-          element: 'My Profile Layout.',
-          children: [
-            {
-              path: '/profile/',
-              element: 'My Profile Layout.',
-            },
-            {
-              path: '/profile/edit',
-              element: 'Update My Profile.',
-            },
-          ],
+          element: (
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: '/profile/edit',
+          element: (
+            <PrivateRoute>
+              <UpdateProfile />
+            </PrivateRoute>
+          ),
         },
       ],
     },
