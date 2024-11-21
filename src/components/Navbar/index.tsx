@@ -1,7 +1,4 @@
 import logo from '@/assets/logo.png'
-import { Link, NavLink } from 'react-router-dom'
-import { Switch } from '@/components/ui/switch'
-import { useTheme } from '@/contexts/ThemeProvider'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
   HoverCard,
@@ -16,10 +13,22 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet'
+import { Switch } from '@/components/ui/switch'
+import { useAuth } from '@/contexts/AuthProvider'
+import { useTheme } from '@/contexts/ThemeProvider'
 import { GiHamburgerMenu } from 'react-icons/gi'
+import { RxAvatar } from 'react-icons/rx'
+import { Link, NavLink } from 'react-router-dom'
+import { Button } from '@/components/ui/button'
+import { useEffect } from 'react'
 
 const Navbar = () => {
   const { theme, setTheme } = useTheme()
+  const { user, logOut } = useAuth()
+
+  useEffect(() => {
+    console.log('user change', user?.photoURL)
+  }, [user])
 
   const handleThemeToggle = () => setTheme(theme !== 'dark' ? 'dark' : 'light')
 
@@ -55,31 +64,44 @@ const Navbar = () => {
             <HoverCard>
               <HoverCardTrigger className='cursor-pointer'>
                 <Avatar>
-                  <AvatarImage src='https://github.com/shadcn.png' />
-                  <AvatarFallback>User</AvatarFallback>
+                  <AvatarImage
+                    className='w-full aspect-square object-cover'
+                    src={user?.photoURL ? user.photoURL : ''}
+                  />
+                  <AvatarFallback>
+                    <RxAvatar className='text-4xl' />
+                  </AvatarFallback>
                 </Avatar>
               </HoverCardTrigger>
               <HoverCardContent className='me-0'>
                 <ul className='flex flex-col gap-2'>
-                  <li>
-                    <Link to='/auth/login' className='hover:underline'>
-                      Login/Register
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to='/profile' className='hover:underline'>
-                      Profile
-                    </Link>
-                  </li>
-                </ul>
+                  {user ? (
+                    <li>
+                      <Link to='/profile' className='hover:underline'>
+                        Profile
+                      </Link>
+                    </li>
+                  ) : (
+                    <li>
+                      <Link to='/auth/login' className='hover:underline'>
+                        Login/Register
+                      </Link>
+                    </li>
+                  )}
 
-                <div className='flex items-center gap-8 mt-2'>
-                  <span>Switch Theme</span>
-                  <Switch
-                    checked={theme === 'dark'}
-                    onCheckedChange={handleThemeToggle}
-                  />
-                </div>
+                  <li className='flex items-center gap-8 mt-1'>
+                    <span>Switch Theme</span>
+                    <Switch
+                      checked={theme === 'dark'}
+                      onCheckedChange={handleThemeToggle}
+                    />
+                  </li>
+                  {user && (
+                    <li className='mt-4'>
+                      <Button onClick={logOut}>Log Out</Button>
+                    </li>
+                  )}
+                </ul>
               </HoverCardContent>
             </HoverCard>
 

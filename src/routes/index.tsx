@@ -1,4 +1,5 @@
 import NotFound from '@/components/NotFound'
+import AuthProvider from '@/contexts/AuthProvider'
 import Root from '@/layouts/Root'
 import Home, { loader as homeLoader } from '@/pages/Home'
 import Login from '@/pages/Login'
@@ -77,7 +78,11 @@ const rootRouter = createBrowserRouter(
 )
 
 const Routes = () => {
-  return <RouterProvider router={rootRouter} />
+  return (
+    <AuthProvider>
+      <RouterProvider router={rootRouter} />
+    </AuthProvider>
+  )
 }
 
 export default Routes

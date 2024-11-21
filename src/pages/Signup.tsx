@@ -8,13 +8,61 @@ import {
 } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { useAuth } from '@/contexts/AuthProvider'
+import { useToast } from '@/hooks/use-toast'
+import { FormEventHandler } from 'react'
 import { Link } from 'react-router-dom'
 
 const Signup = () => {
+  const { toast } = useToast()
+  const { signUp } = useAuth()
+
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
+    event.preventDefault()
+    const { email, password, fullName, photoUrl } = Object.fromEntries(
+      new FormData(event.target as HTMLFormElement)
+    ) as {
+      fullName: string
+      photoUrl: string
+      email: string
+      password: string
+    }
+
+    const isValidFullName = fullName.trim().length > 2
+    const isValidPhotoUrl = photoUrl.trim().length > 2
+
+    const isValidEmail = RegExp(
+      '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$'
+    ).test(email)
+
+    const isValidPassword = RegExp(
+      '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\\d!@#$%^&*(),.?":{}|<>]{6,}$'
+    ).test(password)
+
+    if (
+      !isValidEmail ||
+      !isValidPassword ||
+      !isValidFullName ||
+      !isValidPhotoUrl
+    ) {
+      return toast({
+        title: 'Invalid Credentials!',
+        description: 'You provided invalid data.',
+      })
+    }
+
+    signUp(fullName, photoUrl, email, password).catch((error) => {
+      return toast({
+        title: 'Login signing up!',
+        description: error.message,
+      })
+    })
+  }
+
   return (
     <section className='signup-page'>
       <div className='con mt-12'>
-        <form>
+        <form onSubmit={handleSubmit}>
           <Card className='mx-auto max-w-sm'>
             <CardHeader>
               <CardTitle className='text-2xl'>Signup</CardTitle>
@@ -29,6 +77,7 @@ const Signup = () => {
                   <Input
                     id='fullName'
                     type='text'
+                    name='fullName'
                     placeholder='Alex Smith'
                     required
                   />
@@ -38,6 +87,7 @@ const Signup = () => {
                   <Input
                     id='photoUrl'
                     type='text'
+                    name='photoUrl'
                     placeholder='https://photo.com/z.png'
                     required
                   />
@@ -47,6 +97,7 @@ const Signup = () => {
                   <Input
                     id='email'
                     type='email'
+                    name='email'
                     placeholder='m@example.com'
                     required
                     autoComplete='email'
@@ -59,6 +110,7 @@ const Signup = () => {
                     id='password'
                     type='password'
                     required
+                    name='password'
                     placeholder='Type your password.'
                     autoComplete='current-password'
                   />
