@@ -7,10 +7,14 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
+import { Helmet } from 'react-helmet'
 
 const ResetPassword = () => {
   return (
     <section className='resetPassword-page'>
+      <Helmet>
+        <title>WL| Reset Password </title>
+      </Helmet>
       <div className='con mt-12'>
         <form>
           <Card className='mx-auto max-w-sm'>

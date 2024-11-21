@@ -12,6 +12,9 @@ const Profile = () => {
 
   return (
     <section className='profile-page'>
+      <Helmet>
+        <title>WL| Profile </title>
+      </Helmet>
       <div className='con py-8'>
         <h4 className='text-3xl'>
           Welcome, <span className='text-red-400'>{user?.displayName}</span>

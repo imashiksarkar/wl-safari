@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input'
 import { useAuth } from '@/contexts/AuthProvider'
 import { Label } from '@radix-ui/react-label'
 import { FormEventHandler } from 'react'
+import { Helmet } from 'react-helmet'
 import { useNavigate } from 'react-router-dom'
 
 const UpdateProfile = () => {
@@ -43,6 +44,9 @@ const UpdateProfile = () => {
 
   return (
     <section className='update-profile-page'>
+      <Helmet>
+        <title>WL| Update Profile </title>
+      </Helmet>
       <div className='con mt-12'>
         <form onSubmit={handleSubmit}>
           <Card className='mx-auto max-w-sm'>

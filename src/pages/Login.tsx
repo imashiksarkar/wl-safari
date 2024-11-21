@@ -11,6 +11,7 @@ import { Label } from '@/components/ui/label'
 import { useAuth } from '@/contexts/AuthProvider'
 import { useToast } from '@/hooks/use-toast'
 import { FormEventHandler, useRef, useState } from 'react'
+import { Helmet } from 'react-helmet'
 import { Link, Navigate } from 'react-router-dom'
 
 const Login = () => {
@@ -82,6 +83,9 @@ const Login = () => {
 
   return (
     <section className={`login-page`}>
+      <Helmet>
+        <title>WL| Login </title>
+      </Helmet>
       <div className='con mt-12'>
         <form onSubmit={handleSubmit}>
           <Card className='mx-auto max-w-sm'>

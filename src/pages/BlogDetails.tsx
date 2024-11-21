@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/alert-dialog'
 import { Button } from '@/components/ui/button'
 import { useState } from 'react'
+import { Helmet } from 'react-helmet'
 import { Link, useLoaderData } from 'react-router-dom'
 
 const BlogDetails = () => {
@@ -41,6 +42,9 @@ const BlogDetails = () => {
 
   return (
     <section>
+      <Helmet>
+        <title>Blog | {adventureTitle}</title>
+      </Helmet>
       <div className='con mt-12'>
         <div className='blog-card flex flex-col'>
           <h1 className='text-4xl'>{adventureTitle}</h1>

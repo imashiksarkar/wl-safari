@@ -14,6 +14,7 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { useToast } from '@/hooks/use-toast'
 import { FormEventHandler, useId } from 'react'
+import { Helmet } from 'react-helmet'
 import { FaArrowRight } from 'react-icons/fa'
 import { Link, useLoaderData } from 'react-router-dom'
 
@@ -49,6 +50,10 @@ const Home = () => {
 
   return (
     <section className='home-page h-full'>
+      <Helmet>
+        <title>WL| Home </title>
+      </Helmet>
+
       <div className='max-w-[1600px] mx-auto'>
         <BlogCarousel />
       </div>
@@ -70,7 +75,10 @@ const Home = () => {
               shortDescription,
               ecoFriendlyFeatures,
             }) => (
-              <Card key={id} className='max-w-[350px] flex flex-col animate__animated animate__bounce'>
+              <Card
+                key={id}
+                className='max-w-[350px] flex flex-col animate__animated animate__bounce'
+              >
                 <CardHeader>
                   <img
                     src={image}

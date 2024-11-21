@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { useId } from 'react'
+import { Helmet } from 'react-helmet'
 import { FaArrowRight } from 'react-icons/fa'
 import { Link, useLoaderData } from 'react-router-dom'
 
@@ -15,6 +16,9 @@ const Blogs = () => {
 
   return (
     <section className='blogs-page'>
+      <Helmet>
+        <title>WL| Blogs </title>
+      </Helmet>
       <div className='con mt-16'>
         <div className='destinations grid gap-4 mt-6 grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))] justify-items-center'>
           {blogs.map(
