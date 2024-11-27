@@ -1,4 +1,4 @@
-# [Wildlife Safari](https://wl11.netlify.app) - A Gateway to the Wonders of Nature
+# [Wildlife Safari](https://wl.ashiksarkar.xyz/auth/login) - A Gateway to the Wonders of Nature
 
 Wildlife Safari is your ultimate platform to explore, learn, and marvel at the diversity of wildlife from around the globe. It offers detailed information, interactive visuals, and an engaging experience to foster appreciation and understanding of the natural world. Visit Wildlife Safari to embark on your adventure.
 
