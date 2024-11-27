@@ -1,0 +1,7 @@
+{
+  "hosting": {
+    "site": "wild-life",
+    "public": "dist",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  }
+}
